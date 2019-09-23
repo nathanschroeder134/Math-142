@@ -1,0 +1,872 @@
+\documentclass[12pt,letterpaper]{hmcpset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+\input{macros.tex}
+
+% info for header block in upper right hand corner
+\name{Nathan Schroeder}
+\class{Math142 FA19}
+\assignment{Homework 2}
+\duedate{Due: Mon, Sep  21, 2019}
+
+\renewcommand{\labelenumi}{{(\alph{enumi})}}
+
+
+\begin{document}
+
+\begin{problem}[Problem 2 Section 1-4  - Do Carmo]
+A plane $P$ contained in $\mathbb{R}^3$ is given by the equation
+
+\[a x + by + c z + d = 0\]\
+
+Show that the vector $v = (a,b,c)$ is perpendicular to the plane and that  $\frac{\vert d \vert}{\sqrt{a^2+b^2+c^2}}$ measures the distance from the plane to the origin $(0,0,0)$.
+\end{problem}
+
+\begin{solution}\
+
+Technically, what this problem asserts can only be true when $d = 0$.   To say that the vector $v$ is orthogonal to the plane $P$ is to assert that 
+
+\[ \text{for all} \  (x,y,z) \in P \ \text{ we have} \ <(x,y,z), (a,b,c)> = 0\]\
+
+But then
+
+\[ 0 = ax+by+cz +d = <(x,y,z),(a,b,c)> + d = d \]\
+
+The set 
+
+\[ P = \{(x,y,z) \in \mathbb{R}^3: ax+by+cz + d =0 \} \]\
+
+is an example of an affine subspace of $\mathbb{R}^3$ (also called a flat).  Essentially an affine subspace is like a subspace but is not required to contain the origin.  They are closed under affine combinations of their elements, which is a linear combination with the additional assumption that the  coefficients of the combination must add up to 1.  The following fact essentially characterizes affine subspaces in terms of linear subspaces of $\mathbb{R}^3$:\\
+
+{\large Fact:} Given an affine subspace $P$ there exists a unique subspace and a unique vector $T$ such that 
+\[ P = V+T = \{ v + T : v \in V\}\]
+
+and the distance to $P$ from the origin: 
+
+\[d(\vec0, P) = inf \{ \Vert p \Vert_2 : p \in P \}= \Vert T \Vert_2\]\
+
+ is given by the magnitude of the vector $T$.
+
+\newpage
+
+The correct statement of the orthogonality condition asserted in this problem is:
+
+\[P \ \text{is a translation of the orthogonal complement of} \ v \]\
+
+  Writing  
+\[v^{\bot} = \{ (x,y,z) \in \mathbb{R}^3: ax+by+cz =0 \}\]\
+
+for the orthogonal complement of $v$,  we need to find a vector $T \in \mathbb{R}^3$ such that
+
+\[ P = v^{\bot} + T \]\
+
+Let
+
+\[ T = (\frac{-d}{a^2+b^2+c^2} a, \frac{-d}{a^2+b^2+c^2} b, \frac{-d}{a^2+b^2+c^2} c)\]\\
+
+
+{\large Claim 1: $\quad\quad P = v^{\bot}+T$}\\
+
+First suppose that
+
+\[(\tilde{x},\tilde{y},\tilde{z}) \in v^{\bot} + T\]\
+
+then
+
+\[   (\tilde{x},\tilde{y},\tilde{z}) = (x+ \left(\frac{-d}{a^2+b^2+c^2}\right) a, y+ \left(\frac{-d}{a^2+b^2+c^2} \right) b, z + \left(\frac{-d}{a^2+b^2+c^2}\right) c)\]\
+
+for some $(x,y,z) \in v^{\bot}$.\\
+
+so we have 
+
+\begin{align}
+a&\left(x+ \left(\frac{-d}{a^2+b^2+c^2}\right) a\right) + b\left(y+ \left(\frac{-d}{a^2+b^2+c^2}\right) b\right) + c\left(z+ \left(\frac{-d}{a^2+b^2+c^2}\right) c\right) +d \notag\\
+&\quad\notag\\
+&= ax+by+cz +\left(\frac{-d}{a^2+b^2+c^2}\right) a^2 +\left(\frac{-d}{a^2+b^2+c^2}\right) b^2 +\left(\frac{-d}{a^2+b^2+c^2}\right) c^2 +d \notag\\
+&\quad\notag\\
+&= -d + d\notag\\
+&\notag\\
+&= 0\notag\\
+\notag
+\end{align}
+
+\newpage
+
+which shows that
+
+\[(\tilde{x},\tilde{y},\tilde{z}) \in v^{\bot} + T\]\
+
+Therefore
+
+\[v^{\bot} + T \subseteq P\]\
+
+In the other direction if $(x,y,z) \in P$ then let
+
+\[ (\tilde{x},\tilde{y},\tilde{z}) = (x,y,z) -T =  (x+ \left(\frac{d}{a^2+b^2+c^2}\right) a, y+ \left(\frac{d}{a^2+b^2+c^2} \right) b, z + \left(\frac{d}{a^2+b^2+c^2}\right) c)\]\
+
+and we have
+
+\begin{align}
+<(a,b,c), (\tilde{x},\tilde{y},\tilde{z})> &= (ax+ \left(\frac{d}{a^2+b^2+c^2}\right) a^2, by+ \left(\frac{d}{a^2+b^2+c^2} \right) b^2, cz + \left(\frac{d}{a^2+b^2+c^2}\right) c^2)\notag\\
+&\quad\notag\\
+&= ax+by + cz +  \left(\frac{d}{a^2+b^2+c^2}\right)(a^2+b^2+c^2)\notag\\
+&\quad\notag\\
+&= -d +d \notag\\
+&\quad\notag\\
+&= 0 \notag\\
+\notag
+\end{align}
+
+so $(\tilde{x},\tilde{y},\tilde{z}) \in v^{\bot}$ and 
+ 
+\[  (x,y,z) = (\tilde{x},\tilde{y},\tilde{z}) + T \in v^{\bot}+T \]\
+
+therefore
+
+\[ P = v^{\bot}+T \]\
+
+Claim 1 is proved.
+
+\newpage
+
+{\large Claim 2: $\quad\quad d(\vec0, P) =  \frac{\vert d\vert}{\sqrt{a^2+b^2+c^2}}$}\\
+\\
+
+We have that 
+
+\[ \vec0 \in v^{\bot} \quad \Rightarrow \quad T = \vec0 + T \in v^{\bot} + T\]\
+
+  Furthermore
+
+\begin{align}
+\Vert T \Vert_2 &= \sqrt{\left(\frac{-d}{a^2+b^2+c^2} a\right)^2+\left(\frac{-d}{a^2+b^2+c^2} b\right)^2+\left( \frac{-d}{a^2+b^2+c^2} c\right)^2}\notag\\
+\quad\notag\\
+&= \sqrt{ \left(\frac{-d}{a^2+b^2+c^2}\right)^2(a^2+b^2+c^2) }\notag\\
+\quad\notag\\
+&= \frac{\vert d\vert}{\sqrt{a^2+b^2+c^2}}\notag\\
+\notag
+\end{align}
+
+and so 
+
+\[ d(\vec0,P) \geq \frac{\vert d\vert}{\sqrt{a^2+b^2+c^2}}\]\
+
+
+To obtain the reverse inequality consider 
+
+\[ (\tilde{x},\tilde{y},\tilde{z}) =(x,y,z)  + T \in v^{\bot} + T\]\
+
+then 
+
+
+\begin{align}
+\Vert  (\tilde{x},\tilde{y},\tilde{z}) \Vert_2 &= \sqrt{\left(x-\frac{-d}{a^2+b^2+c^2} a\right)^2+\left(y-\frac{-d}{a^2+b^2+c^2} b\right)^2+\left( z-\frac{-d}{a^2+b^2+c^2} c\right)^2} \notag\\
+&\quad\notag\\
+&=  \sqrt{x^2+y^2+z^2 -\left(\frac{-2d}{a^2+b^2+c^2}\right)(ax+by+cz)+ \left(\frac{-d}{a^2+b^2+c^2}\right)^2(a^2+b^2+c^2) }\notag\\
+&\quad\notag\\
+&=  \sqrt{x^2+y^2+z^2 + \left(\frac{-d}{a^2+b^2+c^2}\right)^2(a^2+b^2+c^2) } \quad\quad\quad \text{since}\  (ax+by+cz)=0 \notag\\
+\quad\notag\\
+&\geq \sqrt{ \left(\frac{-d}{a^2+b^2+c^2}\right)^2(a^2+b^2+c^2)} \quad\quad\quad \text{since}\  x^2+y^2+z^2\geq 0\notag\\
+\quad\notag\\
+&= \frac{\vert d\vert}{\sqrt{a^2+b^2+c^2}}\notag\\
+\notag
+\end{align}
+
+so, since $(\tilde{x},\tilde{y},\tilde{z}) $ was arbitrary we have
+
+\[ d(\vec0,P) \geq \frac{\vert d\vert}{\sqrt{a^2+b^2+c^2}} \]\
+
+and we conclude
+
+\[d(\vec0,P) = \frac{\vert d\vert}{\sqrt{a^2+b^2+c^2}}\]\
+
+Claim 2 is proved.
+
+
+\end{solution}
+
+\newpage
+
+
+
+
+
+
+
+\begin{problem}[Problem 5 Section 1-4  - Do Carmo]
+Show that an equation of a plane passing through three noncolinear points 
+
+\[p_1 = (x_1,y_1,z_1) \quad p_2 = (x_2,y_2,z_2) \quad  p_3 = (x_3,y_3,z_3)\]
+
+is given by
+
+\[ (p-p_1)\wedge(p-p_2)\cdot(p-p_3) =0 \]
+
+where $p = (x,y,z)$ is an arbitrary point of the plane and $p-p_1$, for instance, means the vector $(x-x_1,y-y_1,z-z_1)$.
+\end{problem}
+
+
+\begin{solution}
+We take as geometrically evident that three non-colinear points determine a unique plane $P$ in $\mathbb{R}^3$.  As discussed in the previous problem there corresponds to $P$ a unique subspace $V_P$ such that
+
+\[ \forall \  p \in P \quad V_P = P - p \]\
+
+or equivalently, since a subspace is closed under scalor multiplication
+
+\[ \forall \  p \in P \quad V_P = p-P \]\
+
+We have that
+
+\[ (p-p_1), (p-p_2), (p-p_3) \in V_p\]\
+
+we consider two cases:\\
+
+Case 1:  $(p-p_1)$ and $(p-p_2)$ are parallel. \\
+
+In this case, the angle $\theta$ between these two vectors is either $0$ or $\pi$ and in either case $sin(\theta)=0$.  So we have
+
+ \[\Vert (p-p_1)\wedge(p-p_2)\Vert = \Vert (p-p_1)\Vert\Vert (p-p_1)\Vert\vert sin(\theta)\vert =0\]\
+
+and it follows that
+
+\[ (p-p_1)\wedge(p-p_2) = \vec0\]
+
+and so
+
+\[ (p-p_1)\wedge(p-p_2)\cdot(p-p_3) = \vec0 \cdot (p- p_3)= 0 \]
+
+as required.\\
+
+
+Case 2: $(p-p_1)$ and $(p-p_2)$ are not parallel. \\
+
+In this case 
+
+\[ (p-p_1)\wedge(p-p_2) \neq \vec0 \quad \text{and} \quad (p-p_1)\wedge(p-p_2) \in V_P^{\bot}\]\
+
+Notice
+
+\[ 3 = dim(\mathbb{R}^3) = dim(V_P \oplus V_P^{\bot}) = dim(V_P) + dim(V_P^{\bot}) = 2 + dim(V_P^{\bot})\]\
+
+it follows that
+
+\[ dim(V_P^{\bot}) = 1\]\
+
+So, since $(p-p_1)\wedge(p-p_2) $ is a nonzero element of the one dimensional subspace $V_P^{\bot}$ we have
+
+\[ span((p-p_1)\wedge(p-p_2) ) =  V_P^{\bot}\]\
+
+and so
+
+\[ span((p-p_1)\wedge(p-p_2) )^{\bot} =  V_P\]\
+
+so since $(p-p_3) \in V_P=span((p-p_1)\wedge(p-p_2) )^{\bot}$ we have
+
+\[ (p-p_1)\wedge(p-p_2)\cdot(p-p_3) = 0 \]
+
+as required.\\
+
+We have shown
+
+\[ p \in P \quad \Rightarrow \quad  (p-p_1)\wedge(p-p_2)\cdot(p-p_3) = 0 \]\\
+
+\newpage
+
+Next suppose that $p \in \mathbb{R}^3$ satisfies the equation
+
+\[ (p-p_1)\wedge(p-p_2)\cdot(p-p_3) = 0 \]\
+
+then
+
+\begin{equation*}
+det
+\left[
+\begin{matrix}
+\leftarrow & (p-p_1) & \rightarrow\\
+ \leftarrow & (p-p_2) & \rightarrow\\
+\leftarrow &  (p-p_3)& \rightarrow\\
+\end{matrix}
+\right] 
+=0
+\end{equation*}\
+
+It follows that the three vectors are linearly dependent.  So 
+
+\[ dim(span\{(p-p_1),(p-p_2),(p-p_3)\}) <3 \]\
+
+Since the vectors $p_1$, $p_2$, and $p_3$ are not colinear, we have that not all three of the vectors $p-p_1$, $p-p_2$, and $p-p_3$ are zero.  Therefore
+
+ \[ dim(span\{(p-p_1),(p-p_2),(p-p_3)\}) \neq 0 \]\
+
+Similarly, since the vectors $p_1$, $p_2$, and $p_3$ are not colinear, we have that
+
+ \[ dim(span\{(p-p_1),(p-p_2),(p-p_3)\}) \neq 1 \]\
+
+Since otherwise there would be a line $L$ which contains all  three of the vectors $p-p_1$, $p-p_2$, and $p-p_3$.  But then the line 
+$-L +p$ would contain all three of $p_1$, $p_2$, and $p_3$; a contradiction.\\
+
+We conclude that 
+
+ \[ dim(span\{(p-p_1),(p-p_2),(p-p_3)\}) =2  \]\
+
+It follows that there exists a two dimensional subspace $V$ such that 
+
+\[ p-p_1, p-p_2, p-p_3 \in V\]\
+
+ for which it follows that
+
+\[ p_1-p, \ p_2-p,\  p_3-p \in V\]\
+
+and so 
+
+\[ p_1, \ p_2,\  p_3 \in V +p\]
+
+But $V+p$ is a two dimensional affine subspace and the three noncolinear points $p_1$, $p_2$, and $p_3$ uniquely determine the dimension 2 affine subspace $P$, therefore we have
+
+\[ P = V+p\]\
+
+but $P$ is the translation of a unique two dimensional subspacae $V_P$ defined above, therefore we have
+
+\[ V_P = V\]\
+
+and it follows that 
+
+\[ p-p_1, \ p-p_2, \ p-p_3 \in V_P\]\
+
+and so 
+
+\[ p \in V_P + p_1 = P\]\
+
+
+We have shown
+
+\[ (p-p_1)\wedge(p-p_2)\cdot(p-p_3) = 0  \quad \Rightarrow \quad  p \in P\]\\
+
+and we may conclude that 
+
+\[ (p-p_1)\wedge(p-p_2)\cdot(p-p_3) = 0  \]\
+
+is an equation for the plane $P$
+
+
+
+
+
+\end{solution}
+
+
+
+
+\newpage
+
+\begin{problem}[Problem 11(a) Section 1-4  - Do Carmo]
+Show that the volume $V$ of a parallelepiped generated by three linearly independent vectors $u,v,w \in \mathbb{R}^3$ is given by 
+
+\begin{equation*}
+V = \vert (u\wedge v)\cdot w \vert
+\end{equation*}
+
+and use this to introduce an oriented volume in $\mathbb{R}^3$
+
+\end{problem}
+
+\begin{solution}  
+
+We are given three vectors $u$, $v$, and  $w$,  in that order.  I will ignore the assumption that they are linearly independent and only assume that all three of these vectors is nonzero.\\
+
+Consider the vector 
+\[u\wedge v = \Vert u \Vert \Vert v \Vert sin(\theta) \vec{n}\]
+
+\begin{itemize}
+
+\item the angle $\theta$ between $v$ and $u$ is choosen so that $0\leq \theta \leq \pi$, and does not reflect the orientation of $v$ and $u$, i.e. wether one moves clockwise or counterclockwise while sweeping from $v$ to $u$. It follows
+that $0\leq sin(\theta) \leq 1$.
+
+\item The magnitude $\Vert u \wedge v \Vert = \Vert u \Vert \Vert v \Vert sin(\theta)$ is equal to the area of the parallelogram determined by $u$ and $v$
+
+\item The unit vector $\vec{n}$ is uniquely specified by the requirements that it  be orthogonal to both $u$ and $v$ and  that $u$, $v$, and $n$, in that order, form a right hand system of vectors.
+
+\end{itemize}
+
+Notice that if the pair of vectors $u$ and $v$ form a degenerate parallelogram because they are colinear, then $u \wedge v = \vec0 $.  In this case, for any choice of $w$, we will have
+$u\wedge v \cdot w = 0$ which is the correct value for the volume of a degenerate parrallelepiped.\\
+
+Next consider the scalor 
+\[ u\wedge v \cdot w = (\Vert u \Vert \Vert v \Vert sin(\theta) \vec{n})\cdot w =  (\Vert u \Vert \Vert v \Vert sin(\theta))\Vert w \Vert cos(\phi) \]
+
+\begin{itemize}
+
+\item the angle $\phi$ between $v\wedge u$ and $w$ is choosen so that $0\leq \theta \leq \pi$, and does not reflect the orientation of $v \wedge u$ and $w$, i.e. it is a positive angle wether one moves clockwise or counterclockwise while sweeping from
+${v \wedge u}$ to $w$. It follows that ${-1 \leq cos(\phi) \leq 1}$.
+
+\item The magnitude $\Vert u \wedge v \Vert = \Vert u \Vert \Vert v \Vert sin(\theta)$ is equal to the area of the parallelepiped determined by $v\wedge u$ and $w$
+
+\item The  angel $\phi$ between the vectors $\vec{n}$ and $w$ has positive $cos(\phi)$ when $0\leq \phi < \frac{\pi}{2}$ and is negative $cos(\phi)$ when $\frac{\pi}{2} < \phi \leq \pi$.
+so since $\vec{n}$ was choosen to make $u$, $v$, $\vec{n}$ a right hand system. It follows that $u\wedge v \cdot w$ is positive when $u$, $v$, and $w$ form a right hand system and is negative when $u$, $v$, and $w$ form a left hand system.
+
+\end{itemize}
+
+Notice that if the pair of vectors $\vec{n}$ and $w$ have a $90^{\circ}$ angle between them, then $u$, $v$, and $w$ form a degenerate parallelepiped, then $u\wedge v \cdot w = 0$ which is the correct value for the volume of a degenerate parrallelepiped.\\
+\newpage
+
+
+So given three nonzero vectors $u,v,w$ we have that $u\wedge v \cdot w$ does compute a signed volume where
+
+\begin{equation*}
+sign(u\wedge v \cdot w) = 
+\begin{cases}
+1 & u,v,w\ \text{form a right hand system}\\
+0 & u,v,w \ \text{form a degenerate parallelepiped}\\
+-1 & u,v,w \ \text{form a left hand system}\\
+\end{cases}
+\end{equation*}\
+
+and, indeed, the volume of the parallelepiped generated by $u,v,w \in \mathbb{R}^3$ is given by
+
+\[ V = \vert u\wedge v \cdot w \vert\]\
+
+as required.
+
+
+
+\end{solution}
+
+
+
+\begin{problem}[Problem 11(b) Section 1-4  - Do Carmo]
+Prove that
+
+\begin{equation*}
+V^2 = 
+\left\vert
+\begin{matrix}
+u \cdot u & u\cdot v  & u\cdot w\\
+v \cdot u & v \cdot v & v\cdot w\\
+w \cdot u & w\cdot v & w\cdot w\\
+\end{matrix}
+\right\vert
+\end{equation*}
+
+\end{problem}
+\begin{solution}\
+We have that 
+
+\begin{align}
+V^2 &= \vert u\wedge v\cdot w \vert^2 \notag\\
+\quad\notag\\
+&= \left( det(
+\left[
+\begin{smallmatrix}
+\leftarrow& u & \rightarrow \\
+\leftarrow & v & \rightarrow \\
+\leftarrow & w & \rightarrow \\
+\end{smallmatrix}
+\right]
+)
+\right)^2
+\notag\\
+\quad\notag\\
+&=  det(
+\left[
+\begin{smallmatrix}
+\leftarrow& u & \rightarrow \\
+\leftarrow & v & \rightarrow \\
+\leftarrow & w & \rightarrow \\
+\end{smallmatrix}
+\right]
+)
+ det(
+\left[
+\begin{smallmatrix}
+\uparrow& \uparrow & \uparrow \\
+u & v & w \\
+\downarrow & \downarrow & \downarrow \\
+\end{smallmatrix}
+\right]
+)\notag\\
+\quad\notag\\
+&=  det(
+\left[
+\begin{smallmatrix}
+\leftarrow& u & \rightarrow \\
+\leftarrow & v & \rightarrow \\
+\leftarrow & w & \rightarrow \\
+\end{smallmatrix}
+\right]
+\left[
+\begin{smallmatrix}
+\uparrow& \uparrow & \uparrow \\
+u & v & w \\
+\downarrow & \downarrow & \downarrow \\
+\end{smallmatrix}
+\right]
+)\notag\\
+\quad\notag\\
+&= det(
+\left[
+\begin{matrix}
+u \cdot u & u\cdot v  & u\cdot w\\
+v \cdot u & v \cdot v & v\cdot w\\
+w \cdot u & w\cdot v & w\cdot w\\
+\end{matrix}
+\right]
+)
+\notag
+\end{align}
+
+as required.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{solution}
+
+\newpage
+
+\begin{problem}[Problem 13 Section 1-4  - Do Carmo)]
+Let $u(t) = (u_1(t), u_2(t),u_3(t))$ and $v(t) = (v_1(t),v_2(t),v_3(t))$ be diferentiable maps from the interval $(a,b)$ into $\mathbb{R}^3$. 
+If the derivatives $u^{\prime}(t)$ and $v^{\prime}(t)$ satisfy the conditions
+
+\[u^{\prime}(t) = au(t) + bv(t) \quad \text{and} \quad v^{\prime}(t) = cu(t) - a v(t) \]\
+
+where $a$, $b$, and $c$ are constants.  Show that $u(t) \wedge v(t)$ is a constant vector.
+	
+\end{problem}
+
+\begin{solution}
+If we have $u: I_1 \to \mathbb{R}^3$ and $v: I_2 \to \mathbb{R}^3$ then we have that $u\wedge v: I_3 \to \mathbb{R}^3 $ where $I_3 = I_1 \cap I_2$.  So it makes sense to consider the derivative of $u\wedge v$ with respect to time.\\
+
+By the product rule for the wedge product we have
+
+\[ \frac{d}{dt}( u(t)\wedge v(t)) = \frac{du(t)}{dt} \wedge v(t) + u(t)\frac{dv(t)}{dt}\]\
+
+now substituting the above formulas for $ \frac{du(t)}{dt}$ and $\frac{dv(t)}{dt}$ we have
+
+\[ \frac{d}{dt}( u(t)\wedge v(t))  = (au(t) + bv(t))\wedge v(t) + u(t) \wedge (cu(t) - a v(t))\]\
+
+next, using the fact that the wedge product is bilinear, we have
+
+\[\frac{d}{dt}( u(t)\wedge v(t))  = au(t)\wedge v(t)  + bv(t)\wedge v(t) + c u(t) \wedge u(t) - au(t) \wedge v(t))\]\
+
+finally, since $u(t)\wedge u(t) = v(t)\wedge v(t) =0$, we have
+
+\[\frac{d}{dt}( u(t)\wedge v(t)) = \vec0\]\
+
+It follows that  $u(t) \wedge v(t)$ is a constant vector, as required.
+
+
+
+
+\end{solution}
+
+\newpage
+
+\begin{problem}[Problem 1 - Lecture ]
+Find the length of the curve obtained by intersecting the sphere $x^2+y^2+z^2 =4$ and the cylinder $(x-1)^2 + y^2 =1$ in 
+$\mathbb{R}^3$
+\end{problem}
+
+\begin{solution}
+
+\begin{itemize}
+
+\item Parametrize the cylinder and notice that no constraint is placed on $z$.
+
+\[ x(t) = 1+ cos^2t \quad y(t) = sint \quad \text{for} \ t \in \mathbb{R}\]\
+
+\item  When the cylinder is intersected with the sphere a constraint is imposed on $z$.  Find this constraint by substitution of the cylinder constraints on $x$ and $y$ into the equation for the sphere.
+
+\begin{align}
+(1+cost)^2 + sin^2t + z^2(t) = 4 &\Rightarrow z^2(t) = 4 - cos^2t - sin^2t - 2cost -1 \notag\\
+&\quad\notag\\
+&\Rightarrow z^2(t) = 2(1-cost)\notag\\
+\notag
+\end{align}
+
+\item  We arrive at the following equations for the trace of the  intersection of the cylinder and the sphere.
+
+\[ x(t) = 1+cost \quad y(t) = sint \quad z^2(t) = 2(1-cost)\quad \text{for} \ t \in \mathbb{R}\]\
+
+\item Due to the symmetry of the surfaces being intersected, the trace of the intersection of the sphere and cylinder lies in the four quadrants $Q(x>0, y>0,z>0), Q(x>0,y>0,z<0), Q(x>0,y<0,z<0), Q(x>0,y<0,z>0)$ and
+in each of these four quadrants the length of the trace is the same.  In each case, the trace restricted to a quadrant may be obtained fromt he trace in $Q(x>0, y>0,z>0)$ by a combination of rotations and reflections, operations that preserve length. 
+Therefore, to compute the length of the trace of the intersection it is enough to find the length of the intersection restricted to $Q(x>0, y>0,z>0)$ and multiply by 4.
+
+\item  Notice that in the quadrant $Q(x>0, y>0,z>0)$  we may replace 
+
+\[z^2(t) = 2(1-cost)\quad \text{with the positive square root} \quad z(t) = \sqrt{2(1-cost)}\]
+
+so we have  the parametrization for this section of the trace 
+
+\[ \alpha(t)= (1+cost, sint, \sqrt{2(1-cost)}) \]\
+
+We need to determine an interval $I$ such that when as $t$ ranges over $I$ the curve $\alpha$ travels over the points in the trace of the intersection exactly once.
+
+\newpage
+
+\item When $0< t < \pi$ we see that $(1+cost) >0, sint>0 $ and by definition $\sqrt{2(1-cost)}>0$.  So with $t$ selected from this range, $\alpha(t)$  travels over the points in the trace of the intersection contained in  $Q(x>0, y>0,z>0)$ exactly once.
+So we arrive at a parametrization of the intersection of the sphere and the cylinder restriced to the non-negative orthant $Q(x>0, y>0,z>0)$
+
+\[ \alpha(t) =(1+cost, sint, \sqrt{2(1-cost)})\quad t \in (0,\pi) \]\
+
+\item We have
+
+\[ \alpha^{\prime}(t) = \left(-sint,cost,\frac{sint}{\sqrt{2(1-cost}} \right) \]\
+
+and 
+\[ \Vert \alpha^{\prime}(t) \Vert  = \sqrt{ \frac{3+cost}{2}} \]\
+
+
+\item  So we have the length of the curve obtained by intersecting the sphere $x^2+y^2+z^2 =4$ with the cylinder $(x-1)^2 +y^2 =1$ is given by
+
+\[ 4 \int_0^{\pi} \sqrt{ \frac{3+cost}{2}}  \approx 15.2808 \]
+
+where the approximate value for the integral was provided by multiplying by 4 the result presented in the solutions.  
+ \end{itemize}
+
+
+\end{solution}
+
+\newpage
+
+\begin{problem}[Problem 1 Section 1-2  - Do Carmo)]
+Find a parametrized curve $\alpha(t)$ whose trace is the circle $x^2 + y^2 = 1 $ such that $\alpha(t)$ runs clockwise around the circle with $\alpha(0) =(0,1)$
+\end{problem}
+
+\begin{solution}
+
+Let $I = \mathbb{R}$ and define $\alpha : I \to \mathbb{R}$  by
+
+\[ \alpha(t) = (sin(t),cos(t)) \]\
+
+Notice
+
+\begin{align}
+\alpha(0) &= (sin(0),cos(0)) = (0,1) \notag\\
+\alpha(\frac{\pi}{2}) &= (sin(\frac{\pi}{2}),cos(\frac{\pi}{2})) = (1,0) \notag\\
+\alpha(\pi) &= (sin(\pi),cos(\pi)) = (0,-1) \notag\\
+\alpha(\frac{3\pi}{2}) &= (sin(3\frac{\pi}{2}),cos(3\frac{\pi}{2})) = (-1,0) \notag\\
+\alpha(\pi) &= (sin(\pi),cos(\pi)) = (0,-1) \notag\\
+\notag
+\end{align}
+
+So 
+
+\[\alpha(0) = (sin(0),cos(0)) = (0,1)\]
+
+ and 
+
+\[trace(\alpha) = \alpha(I) = \{(x,y)\in \mathbb{R}^2: x^2 +y^2 =1\}\] \
+ 
+and the circle is transversed clockwise.
+
+\end{solution}
+
+
+
+\newpage
+
+
+
+\begin{problem}[Problem 3 Section 1-2  - Do Carmo)]
+A parametrized curve $\alpha(t)$ has the property that its second derivative $\alpha^{\prime\prime}$ is identically zero.  What can be said about $\alpha$?
+\end{problem}
+
+\begin{solution}
+
+We have that 
+
+\[ \alpha^{\prime\prime}(t) = (0 , \dots, 0) \]\
+
+so that
+
+\[ \alpha^{\prime}(t) = ( \int\ dt, \dots, \int\ dt) = (c_1,\dots,c_n)\]\
+
+and
+
+\[ \alpha(t) = (\int c_1\ dt, \dots, \int c_n\ dt) = (c_1t + b_1, \dots, c_nt + b_n)\]\
+
+so we may write 
+
+\[ \alpha(t) = 
+\left[
+\begin{matrix}
+c1\\
+\vdots\\
+c_n\\
+\end{matrix}
+\right]
+t
++
+\left[
+\begin{matrix}
+b_1\\
+\vdots\\
+b_n\\
+\end{matrix}
+\right]
+\]\\
+
+which is the equation of a line  through the vector $(b_1,\dots,b_n) \in \mathbb{R}^n$ in the direction of the vector $(c_1,\dots,c_n)\in \mathbb{R}^n$.\\
+
+So we may conclude that if $\alpha^{\prime\prime}(t) = \vec0$ for all $t \in I$, then the trace of $\alpha$ is a subset of a stright line in $\mathbb{R}^n$.
+
+
+\end{solution}
+
+\newpage
+
+\begin{problem}[Problem 4 Section 1-2  - Do Carmo)]
+Let $\alpha: I \to \mathbb{R}$ be a parametrized curve and let $v \in \mathbb{R}^3$ be a fixed vector.  Assume that $\alpha^{\prime}(t)$ is orthogonal to $v$ for all $t \in I$ and that $\alpha(0)$ is also orthogonal to $v$.
+Prove that $\alpha(t)$ is orthogonal to $v$ for all $t$.
+\end{problem}
+
+\begin{solution}
+
+We have for any $t \in I$ that
+
+\[ <v,\alpha^{\prime}(t)> = v_1\alpha_1^{\prime}(t) + \dots + v_n \alpha_n^{\prime}(t) =0 \]\
+
+so integrating both sides from 0 to $t$ we have
+
+\[ \int_0^t  v_1\alpha_1^{\prime}(u)\ du + \dots + \int_0^t v_n \alpha_n^{\prime}(u)\ du =\int_0^t 0\ du \]\
+
+or evaluating the integrals
+
+\[ v_1 \alpha_1(t) - v_1 \alpha_1(0) + \dots +  v_n \alpha_n(t) - v_n \alpha_n(0)  = 0 \]\
+
+Since  $\alpha_i(0) = 0$ for each $i = 1,\dots, n$, this simplifies to 
+
+\[ v_1 \alpha_1(t) + \dots +  v_n \alpha_n(t)  = 0 \]\
+
+which, written otherwise, is
+
+\[ <v, \alpha(t)> = 0 \]\
+
+so $\alpha(t)$ is orthogonal to $v$ for all $t \in I$.
+
+
+\end{solution}
+
+\newpage
+
+
+
+
+\begin{problem}[Problem 5 Section 1-2  - Do Carmo)]
+Let $\alpha: I \to \mathbb{R}$ be a parametrized curve, with $\alpha^{\prime}(t) \neq 0$ for all $t \in I$.  
+Show that $\vert \alpha(t)\vert$ is a nonzero constant if and only if $\alpha(t)$ is orthogonal to $\alpha^{\prime}(t)$ for all $t \in I$.
+\end{problem}
+
+\begin{solution}
+\quad\\
+\quad\\
+
+Two vectors should be orthogonal when the "angle between them" is $90^{\circ}$.   Do Carmo only defines a concept of angle between two vectors $v$ and $w$ when both $v, w \neq \vec0$; and only when this is true do we have the equivalence
+
+\[ v \ \text{and}\ w \ \text{are orthogonal}\quad \iff \quad <v,w>=0\]\\
+
+
+$\Rightarrow$) $ \quad$ Suppose that for all $t \in I\quad \Vert \alpha(t) \Vert$ is a nonzero constant.
+
+ Notice that for all $t$: $ \quad\Vert \alpha(t)\Vert = C \neq 0 \quad \Rightarrow \quad \alpha(t) \neq \vec0 \quad$.\\
+
+Also we have assumed that  $\alpha^{\prime}(t) \neq 0$.  So, in this case,  we have that
+
+\[ <\alpha(t),  \alpha^{\prime}(t)> = 0\quad  \Rightarrow \quad \alpha(t) \ \text{and} \ \alpha^{\prime}(t) \ \text{are orthogonal}\]\
+
+Therefore it is enough to show that for all $t \in I$
+
+\[ <\alpha(t),  \alpha^{\prime}(t)> = 0\]\
+
+but
+
+\begin{align}
+\Vert \alpha(t)\Vert = C \quad &\Rightarrow \quad  <\alpha(t), \alpha(t)> = C^2 \notag\\
+&\quad \notag\\
+&\Rightarrow\quad  (\alpha_1(t))^2 + \dots + (\alpha_n(t))^2 = C^2 \notag\\
+&\quad \notag\\
+&\Rightarrow \quad \frac{d}{dt} \left((\alpha_1(t))^2 + \dots + (\alpha_n(t))^2\right) =0 \notag\\
+&\quad \notag\\
+&\Rightarrow \quad  2\alpha_1(t)\alpha_1^{\prime}(t) + \dots + 2\alpha_n(t)\alpha_n^{\prime}(t)  = 0 \notag\\
+&\quad \notag\\
+&\Rightarrow \quad  2<\alpha(t),\alpha^{\prime}(t)> = 0 \notag\\
+\notag
+\end{align}
+
+So for all $t \in I$ we have $\quad <\alpha(t),\alpha^{\prime}(t)> = 0 \quad$ as required.
+
+\newpage
+
+$\Leftarrow$)  $ \quad$   As discussed above, by assuming  that $\alpha$ and $\alpha^{\prime}$ are orthogonal, for all $t \in I$, we have tacitly assumed that 
+\[ \alpha(t) \neq \vec0 \quad \text{for all} \ t \in I\]\
+
+Therefore, to show that $\Vert \alpha(t) \Vert$ equals a nonzero constant, it is enough to show that $\Vert \alpha(t) \Vert$  equals a constant.  The fact that such a constant must be nonzero is built into our assumptions.
+
+\begin{align}
+\alpha(t)\ \text{and} \ \alpha^{\prime}(t)\ \text{are orthogonal} \quad &\Rightarrow \quad <\alpha(t),\alpha^{\prime}(t)> =0 \notag\\
+\quad\notag\\
+&\Rightarrow \quad \alpha_1(t)\alpha_1^{\prime}(t) + \dots + \alpha_n(t)\alpha_n^{\prime}(t) \notag = 0\notag\\
+\quad\notag\\
+&\Rightarrow \int_{t_0}^t\alpha_1(u)\alpha_1^{\prime}(u)\ du+ \dots +\int_{t_0}^t\ \alpha_n(u)\alpha_n^{\prime}(u)\ du \notag = 0\notag\\
+\quad\notag\\
+&\Rightarrow \sum_{i=1}^n \int_{t_0}^t\alpha_i(u)\alpha_i^{\prime}(u)\ du = 0 \notag\\
+\notag
+\end{align}
+
+Where $t_0$ is an arbitrary point selected from $I$. Notice that the definite integrals are well defined since both $\alpha_i(t)$ and $\alpha_i^{\prime}$ are continuous, for each $i = 1,\dots,n$.\\
+\\
+Applying integration by parts to $\ \int_{t_0}^t\alpha_i(u) \alpha_i^{\prime}(u)\ du\ $ with 
+$ \quad
+\begin{smallmatrix}
+u=\alpha_i(t) & dv = \alpha_i^{\prime}(t)\\
+du = \alpha_i^{\prime}(t)& \alpha_i(t)\\
+\end{smallmatrix}
+\quad$
+we have \\
+
+\[ \int_{t_0}^t\alpha_i(u)\alpha_i^{\prime}(u)\ du = \left.(\alpha_i(u))^2\right|_{u=t_0}^{u=t} -  \int_{t_0}^t\alpha_i(u)\alpha_i^{\prime}(u)\ du \]
+
+Therefore
+
+\[ \sum_{i=1}^n\left.(\alpha_i(u))^2\right|_{u=t_0}^{u=t} =2\sum_{i=1}^n \int_{t_0}^t\alpha_i(u)\alpha_i^{\prime}(u)\ du \]\
+
+So when $\alpha(t)\ \text{and} \ \alpha^{\prime}(t)$ are orthogonal we have
+
+\begin{align}
+\sum_{i=1}^n\left.(\alpha_i(u))^2\right|_{u=t_0}^{u=t} = 0 \quad &\Rightarrow \quad \sum_{i=1}^n(\alpha_i(t))^2 = \sum_{i=1}^n (\alpha_i(t_0))^2 \notag\\
+&\quad\notag\\
+&\Rightarrow \quad \Vert \alpha(t) \Vert^2 = \Vert \alpha(t_0) \Vert^2 \notag\\
+\notag
+\end{align}
+
+We conclude that $\Vert \alpha(t) \Vert $ is a constant for all $t \in I$, as required.
+
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
